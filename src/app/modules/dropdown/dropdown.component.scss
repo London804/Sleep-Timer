@@ -1,0 +1,33 @@
+
+// /* element resets */
+input,
+select,
+textarea {
+    width: 100%;
+    margin: 0;
+    outline: 0;
+    // font-family: var(--typeface--1);
+    // font-size: var(--fc-font-size);
+    // line-height: var(--fc-line-height);
+    // vertical-align: middle;
+    // white-space: normal;
+    // box-sizing: border-box;
+    // appearance: none;
+    // -moz-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+    // -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefixes
+}
+
+.form-control {
+    width: fit-content;
+    height: 2.5rem;
+    padding: 0.625rem;
+    border-radius: 0.25rem;
+
+    label {
+        display: flex;
+        margin-bottom: 0.25rem;
+    }
+}
+
+
+

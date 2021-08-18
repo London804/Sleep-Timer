@@ -1,0 +1,24 @@
+$small: 48rem;   // 768px
+$medium: 64rem;  // 1024px
+$large: 80rem;   // 1280px
+$maximum: 90rem; // 1344px - content locked
+
+@mixin responsive($class) {
+    @if $class == small {
+        @media (min-width: $small) {
+            @content;
+        }
+    } @else if $class == medium {
+        @media (min-width: $medium) {
+            @content;
+        }
+    } @else if $class == large {
+        @media (min-width: $large) {
+            @content;
+        }
+    } @else if $class == maximum {
+        @media (min-width: $maximum) {
+            @content;
+        }
+    }
+}

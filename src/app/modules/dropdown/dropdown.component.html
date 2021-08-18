@@ -1,0 +1,17 @@
+<div 
+    class="form-control form-control--dropdown"
+    [formGroup]="config.formGroup">
+    <label for="dropdown">{{config.label}}</label>
+    <select 
+        name="default" 
+        id="default"
+        [formControlName]="config.formControl"
+        (change)="getFormValue()">
+        <ng-container *ngFor="let option of data">
+            <option 
+                [value]="option.value">
+                {{option.label}}
+            </option>
+        </ng-container>
+    </select>
+</div>

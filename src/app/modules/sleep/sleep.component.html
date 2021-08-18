@@ -1,0 +1,19 @@
+<div class="u-flex">
+    <app-dropdown 
+        [config]="inBedForm"
+        [data]="durationIncrements"
+        (formValues)="getBedForm($event)">
+    </app-dropdown>
+    
+    <app-dropdown 
+        [config]="sleepForm" 
+        [data]="durationIncrements"
+        (formValues)="getAsleepForm($event)">
+    </app-dropdown>
+</div>
+
+<button 
+    [disabled]="!durationInBed || !durationAsleep"
+    (click)=calculateScore()>
+    Calculate
+</button>
