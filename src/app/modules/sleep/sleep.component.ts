@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { DURATION_INCREMENTS, Duration, DurationConfig } from '../../shared/constants/duration';
+import { Observable, Subscription } from 'rxjs';
+import { DURATION_INCREMENTS, DurationConfig } from '../../shared/constants/duration';
 import { SleepService } from './sleep.service';
 
 @Component({
@@ -17,7 +17,9 @@ export class SleepComponent implements OnInit {
     durationAsleep: object;
     localResponse: Observable<object>
     score: string;
-
+    scoreSubscription: Subscription
+    loading: boolean;
+    loadingSubscription: Subscription;
 
     inBedForm: DurationConfig = {
         label: 'Duration in bed',
@@ -33,9 +35,13 @@ export class SleepComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.sleepService.currentResponse.subscribe(response => {
+        this.scoreSubscription = this.sleepService.currentResponse.subscribe(response => {
             console.log('subject', response);
             this.localResponse = response;
+        })
+
+        this.loadingSubscription = this.sleepService.loadingResponse.subscribe(response => {
+            this.loading = response;
         })
 
     }
@@ -48,7 +54,6 @@ export class SleepComponent implements OnInit {
         this.durationAsleep = $event;
     }
 
-    // create function to calculate score
     calculateScore() {
         let durationInBed = Object.values(this.durationInBed);
         let durationAsleep = Object.values(this.durationAsleep);
@@ -56,11 +61,19 @@ export class SleepComponent implements OnInit {
         durationAsleep = durationAsleep.map(Number);
 
         this.score = (100 * durationAsleep[0] / durationInBed[0]).toFixed(2)
-        console.log('score', this.score );
-       
 
-        this.sleepService.postSleepDuration(this.score, true)
-            .subscribe(value => console.log('value', value))
+        this.loading = true;
+       
+        // setTimeout to simulate actual call and show
+        setTimeout(() => {     
+            this.sleepService.postSleepDuration(this.score, true)
+                .subscribe(value => value)
+        }, 800);
+    }
+
+    ngOnDestroy() {
+        this.loadingSubscription.unsubscribe();
+        this.scoreSubscription.unsubscribe();
     }
 
 }

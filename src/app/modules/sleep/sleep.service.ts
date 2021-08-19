@@ -11,7 +11,10 @@ import { catchError, tap } from 'rxjs/operators';
 export class SleepService {
     private endpoint = '';
     private sleepResponse = new Subject<any>();
+    private loading = new Subject<any>();
+
     currentResponse = this.sleepResponse.asObservable();
+    loadingResponse = this.loading.asObservable();
   
     constructor(private http: HttpClient) { }
 
@@ -21,16 +24,16 @@ export class SleepService {
             return this.http.post<any>(this.endpoint, score );
         } else {
             const accounts = RESULTS_MOCK;
-            const error = mockError(errorCode);
+            const mockedError = mockError(errorCode);
 
-            // return !!forceResponse ? of(accounts) : throwError(error);
-
+            // return !!forceResponse ? of(accounts) : throwError(error)
             return of(accounts).pipe(
                 tap(response => {
-                    this.sleepResponse.next(response)
+                    this.sleepResponse.next(response),
+                    this.loading.next(false)
                 }),
                 catchError(error => 
-                    throwError(error) )
+                    throwError(mockedError) )
             )
         }
     }
@@ -44,7 +47,7 @@ const RESULTS_MOCK: any = {
     results: [
         {
             id: "1",
-            name: "Asleep and In bed results"
+            name: "Asleep and in bed results"
         }
     ]
 }

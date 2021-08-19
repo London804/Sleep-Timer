@@ -7,12 +7,14 @@ import { DropdownComponent } from './modules/dropdown/dropdown.component';
 import { SleepComponent } from './modules/sleep/sleep.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from './modules/loader/loader.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         DropdownComponent,
-        SleepComponent
+        SleepComponent,
+        LoaderComponent
     ],
     imports: [
         BrowserModule,

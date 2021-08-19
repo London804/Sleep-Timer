@@ -24,13 +24,9 @@ export class DropdownComponent implements OnInit {
         this.myForm = this.config.formGroup = new FormGroup({});
         this.myForm.addControl(this.config.formControl, new FormControl(0));
         
-
-        // console.log('myForm', this.myForm);
-
     }
 
     getFormValue() {
-        // set an Output here
         this.formValues.emit(this.myForm.value);
     }
 
