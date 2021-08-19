@@ -14,6 +14,11 @@
 
 <button 
     [disabled]="!durationInBed || !durationAsleep"
-    (click)=calculateScore()>
+    (click)="calculateScore()">
     Calculate
 </button>
+
+
+<div *ngIf="localResponse">
+    <h3>Your score is {{score}}.</h3>
+</div>

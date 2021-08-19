@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DURATION_INCREMENTS, Duration } from './shared/constants/duration';
 
 @Component({
     selector: 'app-root',
@@ -7,6 +6,5 @@ import { DURATION_INCREMENTS, Duration } from './shared/constants/duration';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'sleepTimer';
-    durationIncrements = DURATION_INCREMENTS
+    title = 'Sleep Timer';
 }

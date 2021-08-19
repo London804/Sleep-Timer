@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { DURATION_INCREMENTS, Duration, DurationConfig } from '../../shared/constants/duration';
+import { SleepService } from './sleep.service';
 
 @Component({
     selector: 'app-sleep',
@@ -8,11 +10,13 @@ import { DURATION_INCREMENTS, Duration, DurationConfig } from '../../shared/cons
 })
 export class SleepComponent implements OnInit {
 
-    constructor() { }
+    constructor(private sleepService: SleepService) { }
 
     durationIncrements = DURATION_INCREMENTS;
     durationInBed: object;
     durationAsleep: object;
+    localResponse: Observable<object>
+    score: string;
 
 
     inBedForm: DurationConfig = {
@@ -29,23 +33,34 @@ export class SleepComponent implements OnInit {
 
     ngOnInit(): void {
 
-        console.log(this.durationAsleep)
+        this.sleepService.currentResponse.subscribe(response => {
+            console.log('subject', response);
+            this.localResponse = response;
+        })
 
     }
 
     getBedForm($event: object) {
         this.durationInBed = $event;
-        console.log('durationInBed', this.durationInBed);
     }
 
     getAsleepForm($event: object) {
         this.durationAsleep = $event;
-        console.log('durationAsleep', this.durationAsleep);
     }
 
     // create function to calculate score
     calculateScore() {
-        console.log('calculate Score')
+        let durationInBed = Object.values(this.durationInBed);
+        let durationAsleep = Object.values(this.durationAsleep);
+        durationInBed = durationInBed.map(Number);
+        durationAsleep = durationAsleep.map(Number);
+
+        this.score = (100 * durationAsleep[0] / durationInBed[0]).toFixed(2)
+        console.log('score', this.score );
+       
+
+        this.sleepService.postSleepDuration(this.score, true)
+            .subscribe(value => console.log('value', value))
     }
 
 }
