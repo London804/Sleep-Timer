@@ -36,7 +36,6 @@ export class SleepComponent implements OnInit {
     ngOnInit(): void {
 
         this.scoreSubscription = this.sleepService.currentResponse.subscribe(response => {
-            console.log('subject', response);
             this.localResponse = response;
         })
 

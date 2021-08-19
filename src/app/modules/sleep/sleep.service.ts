@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Observable, of, throwError, BehaviorSubject, Subject} from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, of, throwError, Subject} from 'rxjs';
 import { mockError } from '../../shared/utils/error';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -26,7 +26,6 @@ export class SleepService {
             const accounts = RESULTS_MOCK;
             const mockedError = mockError(errorCode);
 
-            // return !!forceResponse ? of(accounts) : throwError(error)
             return of(accounts).pipe(
                 tap(response => {
                     this.sleepResponse.next(response),

@@ -208,5 +208,4 @@ export const DURATION_INCREMENTS: Array<Duration> = [
         value: 24
     },
 
-
 ]
