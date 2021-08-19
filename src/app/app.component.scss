@@ -1,0 +1,81 @@
+// boilerplate scss
+
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.75rem;
+    display: flex;
+    align-items: center;
+    background-color :#1976d2;
+    color: white;
+    font-weight: 600;
+}
+
+.toolbar {
+    img {
+        margin: 0 1rem;
+    }
+}
+
+.content {
+    display: flex;
+    margin: 5.125rem auto 2rem;
+    padding: 0 1rem;
+    max-width: 60rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    all: unset;
+    width: fit-content;
+    height: 1rem;
+    margin: 0 0.5rem 1rem;
+    padding: 1rem;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    font-weight: 600;
+
+}
+
+.card--small {
+
+    min-width: 30%;
+    position: relative;
+
+    span {
+        margin-left: 3.75rem;
+    }
+}
+
+svg#rocket {
+    width: 5rem;
+    position: absolute;
+    left: -0.625rem;
+    top: -1.5rem;
+}
+
+svg#rocket-smoke {
+    height: calc(100vh - 5.9375rem);
+    position: absolute;
+    top: 0.625rem;
+    right: 11.25rem;
+    z-index: -10;
+}
+
+svg#clouds {
+    position: fixed;
+    bottom: -10rem;
+    left: -14.375rem;
+    z-index: -10;
+    width: 100%;
+}

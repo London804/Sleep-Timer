@@ -12,13 +12,15 @@
     </app-dropdown>
 </div>
 
-<button 
-    [disabled]="!durationInBed || !durationAsleep"
-    (click)="calculateScore()">
-    Calculate
-</button>
+<div class='sleep__button'>
+    <button 
+        [disabled]="!durationInBed || !durationAsleep"
+        (click)="calculateScore()">
+        Calculate
+    </button>
+</div>
 
 
 <div *ngIf="localResponse">
-    <h3>Your score is {{score}}.</h3>
+    <h3>Your sleep score is {{score}}.</h3>
 </div>
