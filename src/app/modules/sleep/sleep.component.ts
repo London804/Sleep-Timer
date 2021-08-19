@@ -64,7 +64,7 @@ export class SleepComponent implements OnInit {
 
         this.loading = true;
        
-        // setTimeout to simulate actual call and show
+        // setTimeout to simulate actual call and show loader
         setTimeout(() => {     
             this.sleepService.postSleepDuration(this.score, true)
                 .subscribe(value => value)

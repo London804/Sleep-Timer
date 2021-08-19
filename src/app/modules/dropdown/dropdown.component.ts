@@ -11,8 +11,6 @@ export class DropdownComponent implements OnInit {
 
     @Input() config: any;
     @Input() data: Array<Duration>
-    @Input() form: any;
-    @Input() label: string;
     @Output() formValues = new EventEmitter();
 
     myForm: FormGroup;

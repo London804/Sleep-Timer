@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'sleepTimer'`, () => {
+  it(`should have as title 'Sleep Timer'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('sleepTimer');
+    expect(app.title).toEqual('Sleep Timer');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('sleepTimer app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Sleep Timer app is running!');
   });
 });
