@@ -1,6 +1,6 @@
 # SleepTimer
 
-This repo fulfilles the requirements below. 
+This repo fulfilles the requirements of the task below. 
 
 ## The Task
 Create Frontend to be used with a JSON API. The API can be mocked (or created) in any way you see fit
@@ -9,22 +9,30 @@ Requirements
 Frontend initial state:
 
 1 x Dropdown
-    Label: "Duration in bed"
-    Items: 0-24 hours, in 30-minute increments
+
+   - Label: "Duration in bed"
+   - Items: 0-24 hours
+   - in 30-minute increments
+    
 1 x Dropdown
-    Label: "Duration asleep"
-    Items: 0-24 hours, in 30-minute increments
+
+   - Label: "Duration asleep"
+   - Items: 0-24 hours, in 30-minute increments
+    
 1 x button
-    Disabled
-    text: "Calculate"
-    1 x output text
+
+   - Disabled
+   - text: "Calculate"
+   - 1 x output text
 
 When the User selects a value for both time inputs, then the button is enabled.
+
 When the User clicks the button:
-    The text displays “Loading”
-    The frontend calculates a score (100 * duration_asleep/duration_in_bed)
-    The frontend sends the score to some ”save” endpoint on some API via AJAX (you do not need to build a real API, but you might find it useful to create mock of endpoints for success and failure)
-    When the browser receives a successful API response, then the score is displayed in the output text
+    
+   - The text displays “Loading”,
+   - The frontend calculates a score (100 * duration_asleep/duration_in_bed),
+   - The frontend sends the score to some ”save” endpoint on some API via AJAX (you do not need to build a real API, but you might find it useful to create mock of endpoints for success and failure),
+   - When the browser receives a successful API response, then the score is displayed in the output text
 
 
 ## Dev
